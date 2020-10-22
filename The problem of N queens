@@ -1,0 +1,24 @@
+def check(board,row,col):
+    i=0
+    for i in range(row):
+        if abs(board[i]-col)==0 or abs(board[i]-col)==abs(i-row):
+            return False
+    return True
+
+def queen(board,row):
+    border=len(board)
+    if row==border:
+        for i,col in enumerate(board):
+            print('□ '*col+'■ '+'□ '*(len(board)-1-col))
+        print("")
+    col=0
+    while col<border:
+        for col in range(border):
+            if check(board,row,col):
+                board[row]=col
+                queen(board,row+1)
+        col+=1
+
+N=input('Please input the number of queens: ')
+board=[0 for i in range(N)]
+queen(board,0)
