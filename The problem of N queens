@@ -18,7 +18,7 @@ def queen(board,row):
                 board[row]=col
                 queen(board,row+1)
         col+=1
-
-N=input('Please input the number of queens: ')
+        
+N=int(input('Please input the number of queens: '))
 board=[0 for i in range(N)]
 queen(board,0)
