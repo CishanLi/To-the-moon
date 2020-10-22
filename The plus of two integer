@@ -1,0 +1,41 @@
+def add(a,b):
+    a1=a
+    b1=b
+    p=len(a1)
+    q=len(b1)
+    c=[]
+    s=0
+    i=0
+    if p==q:
+        while i<len(a1):
+            t=a1[i]+b1[i]+s
+            if i==p-1 and t>=10:
+                a1.append(0)
+                b1.append(0)
+                s=1
+            elif t>=10:
+                s=1
+            else:
+                s=0
+            c.append(t%10)
+            i+=1
+        return c
+    else:
+        if p>q:
+            for i in range(p-q):
+                b1.append(0) 
+            return add(a1,b1)
+        else:
+            for i in range(q-p):
+                a1.append(0) 
+            return add(a1,b1)            
+def main():
+    a=str(input('Please input a integer a: '))
+    b=str(input('Please input a integer b: '))
+    A,B=[],[]
+    for i in range(-1,-len(a)-1,-1):
+        A.append(int(a[i]))
+    for i in range(-1,-len(b)-1,-1):
+        B.append(int(b[i]))
+    print(add(A,B))
+main()
